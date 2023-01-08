@@ -63,4 +63,4 @@ def get_digimon_by_name():
 #     return "pass"
 
 if __name__ == '__main__':
-    app.run(host='127.10.0.2',port=9900,debug=True)
+    app.run(host='0.0.0.0',debug=False)

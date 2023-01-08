@@ -2,4 +2,3 @@ Flask
 Flask-Migrate
 MySQL
 requests
-fullpage.js
