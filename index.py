@@ -19,6 +19,7 @@ levels = [
 
 
 # GET ALL DIGIMONs
+@app.route('/')
 @app.route('/digimon',methods =['GET'])
 def get_digimon():
     return render_template('index.html',data=data,levels=levels)
