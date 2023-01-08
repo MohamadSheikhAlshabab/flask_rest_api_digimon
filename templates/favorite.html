@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}"
+    />
+  </head>
+  <body>
+    <header>
+        <a href="/digimon">Index</a>
+        <a href="/digimon">Details</a>
+        <a href="/digimon/favorite">Favorite</a>
+    </header> 
+
+    <section id="fullpage">
+      {% for item in data%}
+      <div class='container vertical-scrolling'>
+        <h3><span class="digimon_key">Name:</span> <span class="digimon_value">{{item.name}}</span></h3>
+        <img src="{{item.img}}" alt="{{item.img}}" class='img_container'/>
+        <p><span class="digimon_key">Level:</span> <span class="digimon_value">{{item.level}}</span></p>
+        <button>Add To Favorite</button>
+      </div>
+      {% endfor%}
+
+    </section>
+  </body>
+</html>

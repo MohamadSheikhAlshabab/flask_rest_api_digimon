@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}"
+    />
+        {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.15/fullpage.min.js" integrity="sha512-rNf09cQHIWzD8BU37lIb3rInygeWXW2hVqJ7niVtTPXWuVR3aFiph1eFIeDiEQV8J45u0qfp7ng8I3TzJHY4Eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.15/fullpage.css" integrity="sha512-joJLRX4chQYCQlk0R4FXEgZHqsWA1hf4e+C+QKyi8fnfDm8FlEsNAVo+ByQhD19BrgVZGSOJKAQZa5M5gXDtpQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <form action="{{ url_for("get_digimon")}}" method="post">
+        <label for="name">Search Digimon:</label>
+        <input type="text" id="name" name="name">
+      </form>
+    <section>
+      {% for item in digimon%}
+      <div>
+        <img src="{{item.img}}" />
+        <h3><span class="digimon_key">Name:</span> <span class="digimon_value">{{item.name}}</span></h3>
+        <p><span class="digimon_key">Level:</span> <span class="digimon_value">{{item.level}}</span></p>
+        <button>Add To Favorite</button>
+      </div>
+      {% endfor%}
+
+    </section>
+        {% comment %} <script>
+      new fullpage("#fullpage", {
+        lockAnchors: true,
+        sectionSelector: '.vertical-scrolling',
+        scrollingSpeed: 20,
+        touchSensitivity: 0,
+        fitToSection: true,
+        fitToSectionDelay:0,
+        credits: { enabled: false, label: 'Made with fullPage.js', position: 'right'},
+      });
+    </script> {% endcomment %}
+  </body>
+</html>

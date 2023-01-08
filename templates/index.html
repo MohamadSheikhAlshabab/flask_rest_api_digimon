@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <a href="/digimon">
+          <img src="{{url_for('static',filename='/css/digimon_logo.png')}}" alt='alt' id='logo'>
+        </a>
+        <form action="/digimon/name" method='GET'>
+          <input type='text' placeholder='Search Digimon' id='search' name='name'>
+        </form>
+        <div id='header_links'>
+            <a href="/digimon">Index</a>
+        </div>
+    </header> 
+
+    <ul id='levels'>
+      {% for level in levels%}
+      <a href='/digimon/level/{{level}}' class='levels'><li>{{level}}</li></a>
+      {% endfor%}
+    </ul>
+    <section id="fullpage">
+        {% for item in data%}
+        <div class='container vertical-scrolling'>
+            <h3><span class="digimon_key">Name:</span> <span class="digimon_value">{{item.name}}</span></h3>
+            <img src="{{item.img}}" alt="{{item.img}}" class='img_container'/>
+            <p><span class="digimon_key">Level:</span> <span class="digimon_value">{{item.level}}</span></p>
+            <button>Add To Favorite</button>
+        </div>
+        {% endfor%}
+    </section>
+    <footer>
+      <p>All rights reserved BY <a href='https://github.com/MohamadSheikhAlshabab'>Mohamad Sheikh Alshabab</a> &#169;.</p>
+      <p>This website's data is fetched from the <a href='https://digimon-api.vercel.app/'>Digimon API</a></p>
+      <p id='to_top' onclick="topFunction()">⇧</p>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      // Get the button:
+let mybutton = document.getElementById("to_top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "flex";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+    </script>
+    </body>
+</html>
