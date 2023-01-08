@@ -43,7 +43,6 @@ def get_detail_by_level(level):
 @app.route('/digimon/name', methods=['GET'])
 def get_digimon_by_name():
     search_name = request.args.get('name').lower()
-    print(search_name,type(search_name))
     if search_name:
         filtered_data = [item for item in data if search_name in item['name'].lower()]
     else:
