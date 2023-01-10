@@ -1,7 +1,7 @@
 import requests
 from flask import Flask,request,render_template
 
-app = Flask(__name__)
+server = Flask(__name__)
 
 url = 'https://digimon-api.vercel.app/api/digimon'
 response = requests.get(url)
@@ -18,18 +18,15 @@ levels = [
     ]
 
 
-# GET ALL DIGIMONs
-@app.route('/')
-@app.route('/digimon',methods =['GET'])
+@server.route('/')
+@server.route('/digimon',methods =['GET'])
 def get_digimon():
     try:
         return render_template('index.html',data=data,levels=levels)
     except Exception as err:
         print(err)
-# <------GET ALL DIGIMONs----->
 
-# GET ALL DIGIMONs by level
-@app.route('/digimon/level/<level>',methods =['GET'])
+@server.route('/digimon/level/<level>',methods =['GET'])
 def get_digimon_by_level(level):
     try:
         digimons_by_level = get_detail_by_level(level)
@@ -37,7 +34,6 @@ def get_digimon_by_level(level):
     except Exception as err:
         print(err)
 
-# function to filter by level
 def get_detail_by_level(level):
     try:
         api = f'{url}/level/{level}'
@@ -46,10 +42,8 @@ def get_detail_by_level(level):
         return data_api
     except Exception as err:
         print(err)
-# <------GET ALL DIGIMONs by level----->
 
-# function to filter by name
-@app.route('/digimon/name', methods=['GET'])
+@server.route('/digimon/name', methods=['GET'])
 def get_digimon_by_name():
     try:
         search_name = request.args.get('name').lower()
@@ -60,20 +54,7 @@ def get_digimon_by_name():
         return render_template('index.html',data=filtered_data,levels=levels)
     except Exception as err:
         print(err)
-# <------GET ALL DIGIMONs by name----->
-
-# @app.route('/digimon/<name>', methods=['POST'])
-# def update_digimon_by_id(id):
-#     return "pass"
-
-# @app.route('/digimon/<name>', methods=['PUT'])
-# def update_digimon_by_id(id):
-#     return "pass"
-
-# @app.route('/digimon/<name>', methods=['DELETE'])
-# def delete_digimon_by_id(id):
-#     return "pass"
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=False)
+    server.run()
