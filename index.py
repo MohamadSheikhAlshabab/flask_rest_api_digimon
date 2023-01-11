@@ -1,14 +1,14 @@
-from logging import FileHandler,WARNING
+# from logging import FileHandler,WARNING
 from flask import Flask,request,render_template,send_from_directory
 import requests,os
 
-TEMPLATE_DIR = os.path.abspath('../templates')
-STATIC_DIR = os.path.abspath('../static')
+# TEMPLATE_DIR = os.path.abspath('../templates')
+# STATIC_DIR = os.path.abspath('../static')
 
 app = Flask(__name__)
 
-file_handler = FileHandler('errorlog.txt')
-file_handler.setLevel(WARNING)
+# file_handler = FileHandler('errorlog.txt')
+# file_handler.setLevel(WARNING)
 
 url = 'https://digimon-api.vercel.app/api/digimon'
 response = requests.get(url)
