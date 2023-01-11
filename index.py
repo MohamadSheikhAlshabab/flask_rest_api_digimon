@@ -1,6 +1,6 @@
-import requests,os
 from logging import FileHandler,WARNING
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,send_from_directory
+import requests,os
 
 TEMPLATE_DIR = os.path.abspath('../templates')
 STATIC_DIR = os.path.abspath('../static')
@@ -62,6 +62,11 @@ def get_digimon_by_name():
         return render_template('index.html',data=filtered_data,levels=levels)
     except Exception as err:
         return print(err)
+
+
+@app.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
     app.debug = True

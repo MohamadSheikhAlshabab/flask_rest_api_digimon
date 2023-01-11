@@ -9,50 +9,107 @@
       rel="stylesheet"
       href="{{url_for('static',filename='css/style.css')}}"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='apple-touch-icon.png') }}"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="180x180"
+      href="{{ url_for('static', filename='favicon-32x32.png') }}"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='favicon-16x16.png') }}"
+    />
+
+    <link rel="manifest" href="site.webmanifest" />
   </head>
   <body>
     <header>
-        <a href="/digimon">
-          <img src="{{url_for('static',filename='/css/digimon_logo.png')}}" alt='alt' id='logo'>
-        </a>
-        <form action="/digimon/name" method='GET'>
-          <input type='text' placeholder='Search Digimon' id='search' name='name' autocomplete='off'>
-        </form>
-        <div id='header_links'>
-            <a href="/digimon">Index</a>
-        </div>
-    </header> 
+      <a href="/digimon">
+        <img
+          src="{{url_for('static',filename='/css/digimon_logo.png')}}"
+          alt="alt"
+          id="logo"
+        />
+      </a>
+      <form action="/digimon/name" method="GET">
+        <input
+          type="text"
+          placeholder="Search Digimon"
+          id="search"
+          name="name"
+          autocomplete="off"
+        />
+      </form>
+      <div id="header_links">
+        <a href="/digimon">Index</a>
+      </div>
+    </header>
 
-    <ul id='levels'>
+    <ul id="levels">
       {% for level in levels%}
-      <a href='/digimon/level/{{level}}' class='levels'><li>{{level}}</li></a>
+      <a href="/digimon/level/{{level}}" class="levels"><li>{{level}}</li></a>
       {% endfor%}
     </ul>
     <section id="fullpage">
-        {% for item in data%}
-        <div class='container vertical-scrolling'>
-            <h3><span class="digimon_key">Name:</span> <span class="digimon_value">{{item.name}}</span></h3>
-            <img src="{{item.img}}" alt="{{item.img}}" class='img_container'/>
-            <p><span class="digimon_key">Level:</span> <span class="digimon_value">{{item.level}}</span></p>
-            <button>Add To Favorite</button>
-        </div>
-        {% endfor%}
+      {% for item in data%}
+      <div class="container vertical-scrolling">
+        <h3>
+          <span class="digimon_key">Name:</span>
+          <span class="digimon_value">{{item.name}}</span>
+        </h3>
+        <img src="{{item.img}}" alt="{{item.img}}" class="img_container" />
+        <p>
+          <span class="digimon_key">Level:</span>
+          <span class="digimon_value">{{item.level}}</span>
+        </p>
+        <button>Add To Favorite</button>
+      </div>
+      {% endfor%}
     </section>
     <footer>
-      <p>All rights reserved BY <a href='https://github.com/MohamadSheikhAlshabab'>Mohamad Sheikh Alshabab</a> &#169;.</p>
-      <p>This website's data is fetched from the <a href='https://digimon-api.vercel.app/'>Digimon API</a></p>
-      <p id='to_top' onclick="topFunction()">⇧</p>
+      <p>
+        All rights reserved BY
+        <a href="https://github.com/MohamadSheikhAlshabab"
+          >Mohamad Sheikh Alshabab</a
+        >
+        &#169;.
+      </p>
+      <p>
+        This website's data is fetched from the
+        <a href="https://digimon-api.vercel.app/">Digimon API</a>
+      </p>
+      <p id="to_top" onclick="topFunction()">⇧</p>
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
       let mybutton = document.getElementById("to_top");
 
-      window.onscroll = function() {scrollFunction()};
+      window.onscroll = function () {
+        scrollFunction();
+      };
 
       function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
           mybutton.style.display = "flex";
         } else {
           mybutton.style.display = "none";
@@ -64,5 +121,5 @@
         document.documentElement.scrollTop = 0;
       }
     </script>
-    </body>
+  </body>
 </html>
