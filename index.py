@@ -17,7 +17,7 @@ data = response.json()
 if response.status_code != 204:
     data
 if response.status_code != 404:
-    print('Oh, No! this 404 error')
+    print(response)
 levels = [
     'In Training',
     'Training',
@@ -70,4 +70,4 @@ def favicon():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',port=int(os.environ.get('PORT', 3000)))

@@ -17,7 +17,7 @@ body{
     /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  #ffffff 0%, #e00000 50% ); */
     background-image: url('./giphy.gif');
     color: #ffffff;
-    font-size: larger;
+    font-size: xx-larger;
     font-weight: bolder;
     font-family: 'pixel';
     /* scroll-snap-type: y mandatory;
@@ -101,7 +101,7 @@ section{
     display: grid;
     gap: 1rem;  
     margin: 0 4rem;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     /* scroll-snap-align: center; */
 }
 .container{
@@ -120,6 +120,9 @@ section{
     /* height: 4rem; */
     border-radius: 1rem;
     box-shadow: -5px -10px 8px #4caf50;
+    min-height: auto;
+    max-width: fit-content;
+    width: 26rem;
 }
 .container:hover {
     transform: translateY(5px);
@@ -129,20 +132,20 @@ section{
 .img_container{
     mix-blend-mode: multiply;
     backdrop-filter: drop-shadow(0px 0px 0px rgba(0, 25, 0));
-    /* max-width: 500px; */
+    max-width: 10rem;
     border-radius: 0.5rem;
     filter:blur(5px 5px 5px rgba(0, 0, 0, 1));
 }
 
 .digimon_key{
-    font-size: 2rem;
+    font-size: 1rem;
     color: rgb(1, 161, 28);
     text-shadow: 1px 1px rgb(0, 0, 0);
     font-family:system-ui;
 }
 .digimon_value{
     word-break: break-word; 
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bolder;
     letter-spacing: 5.7px;
     /* background: -webkit-linear-gradient(rgb(0, 0, 0)3%, rgb(1, 252, 14));
@@ -157,7 +160,7 @@ button{
     text-align: center;
     height: 3rem;
     /* width: 10rem; */
-    font-size: larger;
+    font-size: small;
     font-weight: bolder;
     text-shadow: 2px 1px black;
     color: white;
