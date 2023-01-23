@@ -68,6 +68,15 @@ def get_digimon_by_name():
 def favicon(): 
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-# if __name__ == '__main__':
-#     app.debug = True
-#     app.run(host='0.0.0.0',port=int(os.environ.get('PORT', 3000)))
+
+@app.route('/favorite') 
+def favorites():
+    return render_template("favorites.html", data=data, add=add_to_favorites)
+
+def add_to_favorites():
+    return 'h '
+
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host='0.0.0.0',port=int(os.environ.get('PORT', 3000)))
